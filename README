@@ -1,0 +1,38 @@
+Java Project Semester 2 
+
+Sam Courtney: C22314173
+Andrea Luca: C22390831
+
+Search Engine
+
+## Overview
+
+This java code when run, opens a GUI and allows a user to enter a word that they would like to find in some files of 
+there chosing. The user then clicks a button to open up there file manager and seletcs files they want to search.
+The files are then searched , line by line, taking a count of how may times the search word has been found
+and printing the lines the word was found in to a panel in the GUI. At the end of the program the total number of 
+occurences is printed to the screen along with the file path and the file with the most occurences of the word
+is poisitioned at the top of the list ,thus ordering the files with the most matches at the top and the least at
+the bottom.
+
+
+## Files Included
+
+control.java : Contains the main control class to manage GUI and file processing.
+
+FileProcessor.java : Handles the searching of the word within the text files.
+
+FileSelector.java : Provides a method for selecting multiple files.
+
+Gui.java : Implements the graphical user interface using java swing components.
+
+
+## How To Use
+
+1. Download the files
+2. Complie the files
+3. Enter a search word into the box provided
+4. Click the "Click me to access files" button
+5. Upload txt files yo wish to search
+6. Wait for files to be searched
+7. Files will be ranked in the last panel the the bottom of the GUI

@@ -36,3 +36,17 @@ Gui.java : Implements the graphical user interface using java swing components.
 5. Upload txt files yo wish to search
 6. Wait for files to be searched
 7. Files will be ranked in the last panel the the bottom of the GUI
+
+
+## Core Functionality
+
+The core function of the code is to simply count the occurences of a word in a file
+and allow the user to upload as many files as they would like.
+
+
+## Optional Functionality
+
+Inbuilt into the code users can search for strings and phrases as opposed to just a single word.
+No matter how a word is entered eg "Because" , "because" , "BeCaUsE" , the search will work exactly the same
+no matter what case the search word is entered in.
+The files are sorted and the ones with the most matches are put to the top of the list.

@@ -145,7 +145,7 @@ public class Gui {
         rankfield.append("\nFiles in the order of most relevant:\n\n");
         for (String filename : sortedFiles) {
             double score = rankingScoresMap.getOrDefault(filename, 0.0);
-            rankfield.append( filename + " - Ranking Score: " + String.format("%.2f", score) + "\n");
+            rankfield.append( filename + " - Ranking Score: " + String.format("%.4f", score) + "\n");
         }
     }
 

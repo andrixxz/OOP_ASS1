@@ -56,3 +56,19 @@ spelling ie "to" would also search for "too".
 We Would have also added a search where users can search for words by the 
 starting and trailing letters. For example if a user entered h*y the words
 beginning with h and ending in y would be returned ie "happy".
+
+
+## Core Functionality
+
+The core function of the code is to simply count the occurences of a word in a file
+and allow the user to upload as many files as they would like.
+
+
+## Optional Functionality
+
+Inbuilt into the code users can search for strings and phrases as opposed to just a single word.
+No matter how a word is entered eg "Because" , "because" , "BeCaUsE" , the search will work exactly the same
+no matter what case the search word is entered in.
+The files are sorted and the ones with the most matches are put to the top of the list.
+Files are able to be saved to a location of the users choosing.
+The Output panels can be cleared after use.

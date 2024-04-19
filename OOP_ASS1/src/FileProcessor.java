@@ -50,20 +50,24 @@ public class FileProcessor {
         double lengthFactor = 1.0 / wordCount;
 
         // assigns weights to the frequency and length factor
-        double frequencyWeight = 0.6; // 0.6 as frequency is more important - indicator of relevance
-        double lengthWeight = 0.4;
+        double frequencyWeight = 0.8; // 0.6 as frequency is more important - indicator of relevance
+        double lengthWeight = 0.2;
+        
+        double rankingScore; // Declare the variable outside of the if-else block
 
-        // combines the frequency and length factors using their weights to calculate the overall ranking score
-        double rankingScore = (frequencyWeight * frequency) + (lengthWeight * lengthFactor);
-
-
+        if (matchCounter > 0) {
+            // combines the frequency and length factors using their weights to calculate the overall ranking score
+            rankingScore = (frequencyWeight * frequency) + (lengthWeight * lengthFactor);
+        } else {
+            rankingScore = 0;
+        }
 
         output.append("\nThe File Path is: ").append(file.getAbsolutePath()).append("\n");
         gui.appendToConsole(output.toString());
         gui.appendToRank(" Total matches found in " + file.getAbsoluteFile(), " are ", matchCounter);
         gui.appendPercentage("\n The percentage of matches found in " + file.getName() + ": ", percentage);
         // Append the ranking score to the GUI
-        gui.appendRankingScore("Ranking score for " + file.getName() + ": ", String.format("%.2f", rankingScore));
+        //gui.appendRankingScore("Ranking score for " + file.getName() + ": ", String.format("%.2f", rankingScore));
         // Store the ranking score for this file
         rankingScoresMap.put(file.getName(), rankingScore);
         
@@ -86,4 +90,3 @@ public class FileProcessor {
 
 
 }
-

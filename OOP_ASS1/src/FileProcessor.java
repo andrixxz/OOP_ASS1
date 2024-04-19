@@ -51,7 +51,7 @@ public class FileProcessor {
                 
             }	// appends message if file contains no words matching search term
 	            if (matchCounter == 0) {
-	                output.append("\nNo words were found with the search term: ").append(searchWord);
+	                output.append("\nNo matches were found with the search term: ").append(searchWord);
 	            }
 	      // catches any IOException that might occur during file reading      
         } catch (IOException ex) {

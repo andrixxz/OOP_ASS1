@@ -13,8 +13,8 @@ public class Gui {
     private JLabel inputLabel;
     private JTextField inputField;
     private JButton fileButton;
-    private JButton saveButton; // Add Save button
-    //private JButton clearButton;
+    private JButton saveButton; 
+    private JButton clearButton;
     private JTextArea consoleField;
     private JTextArea rankfield;
 
@@ -24,8 +24,8 @@ public class Gui {
         inputLabel = new JLabel("Enter A Word To Search For");
         inputField = new JTextField(20);
         fileButton = new JButton("Click Me To Access Files");
-        saveButton = new JButton("Save"); // Initialize Save button
-        //clearButton = new JButton("Clear output");
+        saveButton = new JButton("Save Output"); // Initialize Save button
+        clearButton = new JButton("Clear output");
         consoleField = new JTextArea();
         rankfield = new JTextArea();
 
@@ -36,9 +36,9 @@ public class Gui {
         frame.setLayout(null);
         panel.setLayout(null);
 
-        frame.setSize(700, 690);
+        frame.setSize(600, 690);
         frame.setResizable(false);
-        frame.setTitle("JFrame Title");
+        frame.setTitle("Search Engine");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
@@ -54,46 +54,72 @@ public class Gui {
         fileButton.setBounds(0, 120, 200, 75);
         panel.add(fileButton);
 
-        // Add Save button to panel
-        saveButton.setBounds(150, 100, 100, 50);
-        panel.add(saveButton);
-      
-//        // Add Clear button to panel
-//        clearButton.setBounds(100, 150, 100, 50);
-//        panel.add(clearButton);
-
+        /*
+         *   .setLayout(null); Does not allow Computer to make changes
+         *   thus giving me total access in placing boxes / components
+         *
+         *   Setting the frame size and ensuring is can't be resized, setting
+         *  a title and making sure it closers when the user asks and
+         *  setting it to visible
+         * 
+         *  Next the bounds of the panel, label , inputfield and file button
+         *  are set to where i want them on the screen, adding them to the panel
+         *  so that they can be seen
+         *  
+         */
+        
         consoleField.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(consoleField);
         scrollPane.setBounds(100, 220, 400, 200);
 
         rankfield.setEditable(false);
         JScrollPane rankpane = new JScrollPane(rankfield);
-        rankpane.setBounds(150, 430, 300, 200);
+        rankpane.setBounds(100, 430, 280, 200);
+
+        // Add Save button to panel
+        saveButton.setBounds(380, 430, 120, 50);
+        frame.add(saveButton);
+
+        // Add Clear button to panel
+        clearButton.setBounds(380, 500, 120, 50);
+        frame.add(clearButton);
 
         frame.add(scrollPane);
         frame.add(panel);
         frame.add(rankpane);
-
-//        // ActionListener for Clear button
-//        clearButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                consoleField.setText(""); // Clear consoleField
-//                rankfield.setText(""); // Clear rankfield
-//            }
-//        });
         
-        // Add ActionListener for Save button
+        /*
+         *  Make sure the user can't type in the output boxes
+         *  and make the boxes scroll by creating
+         *  JScrollPane objects to enable scrolling
+         *
+         *  setting the bounds of each panel and button
+         * 
+         *  Adding the panels to the frame
+         *
+         */
+        
+        
+        // Removes any text from the output consoles
+        // When the clear-button is pressed
+        clearButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                consoleField.setText("");
+                rankfield.setText("");
+            }
+        });
+
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
                 int returnValue = fileChooser.showSaveDialog(null);
-                
+
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     try (PrintWriter writer = new PrintWriter(selectedFile)) {
                         writer.println(rankfield.getText());
-                        writer.println(consoleField.getText()); // Write console output to file
-                        // Show popup message with file path
+                        writer.println(consoleField.getText());
+                        // Show pop up message with file path
                         JOptionPane.showMessageDialog(null, "File saved successfully to: " + selectedFile.getAbsolutePath());
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -101,13 +127,23 @@ public class Gui {
                 }
             }
         });
+        
+        /*
+         *  Adds an action listener to the save button
+         * 
+         *  Writes content to the selected file
+         * 
+         *  Displays a pop up message indicating the
+         *  success or failure to save the file
+         *
+         */
     }
 
     public void printRanking(List<String> sortedFiles, Map<String, Double> rankingScoresMap) {
         rankfield.append("\nFiles in the order of most relevant:\n\n");
         for (String filename : sortedFiles) {
             double score = rankingScoresMap.getOrDefault(filename, 0.0);
-            rankfield.append(filename + " - Ranking Score: " + String.format("%.2f", score) + "\n");
+            rankfield.append( filename + " - Ranking Score: " + String.format("%.2f", score) + "\n");
         }
     }
 
@@ -118,10 +154,11 @@ public class Gui {
     public void appendToRank(String message, String message2, int match) {
         rankfield.append(message + message2 + match + "\n");
     }
-    
+
     public void appendPercentage(String message, double percentage) {
         rankfield.append(message + String.format("%.2f%%", percentage) + "\n");
     }
+
     public void appendRankingScore(String message, String score) {
         rankfield.append(message + score + "\n");
     }

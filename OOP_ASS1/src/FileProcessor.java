@@ -28,12 +28,15 @@ public class FileProcessor {
                 int index = 0;
 
                 while ((index = line.toLowerCase().indexOf(searchWord.trim().toLowerCase(), index)) != -1) {
-                    output.append("\nThe Word '").append(searchWord).append("' was found in line: ").append(line);
+                    output.append("\nThe search term '").append(searchWord).append("' was found in line: ").append(line);
                     matchCounter++;
                     index += searchWord.length();
                 }
                 
             }
+	            if (matchCounter == 0) {
+	                output.append("\nNo words were found with the search term: ").append(searchWord);
+	            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -62,10 +65,10 @@ public class FileProcessor {
             rankingScore = 0;
         }
 
-        output.append("\nThe File Path is: ").append(file.getAbsolutePath()).append("\n");
+        output.append("\nThe File Path is: \n").append(file.getAbsolutePath()).append("\n");
         gui.appendToConsole(output.toString());
-        gui.appendToRank(" Total matches found in " + file.getAbsoluteFile(), " are ", matchCounter);
-        gui.appendPercentage("\n The percentage of matches found in " + file.getName() + ": ", percentage);
+        gui.appendToRank("Total matches found in " + file.getAbsoluteFile(), " are:\n", matchCounter);
+        gui.appendPercentage("\nThe percentage of matches found in " + file.getName() + ": \n", percentage);
         // Append the ranking score to the GUI
         //gui.appendRankingScore("Ranking score for " + file.getName() + ": ", String.format("%.2f", rankingScore));
         // Store the ranking score for this file

@@ -93,7 +93,7 @@ public class Gui {
          *  and make the boxes scroll by creating
          *  JScrollPane objects to enable scrolling
          *
-         *  setting the bounds of each panel and button
+         *  Setting the bounds of each panel and button
          * 
          *  Adding the panels to the frame
          *
@@ -149,6 +149,9 @@ public class Gui {
         }
     }
 
+    // Method for printing ranking information in the JTextArea
+    // Iterates through a list if the files that the user uploaded and
+    // their linked score and appends them to the rankfield
     public void appendToConsole(String text) {
         consoleField.append(text + "\n");
     }
@@ -168,6 +171,9 @@ public class Gui {
     public JTextField getInputField() {
         return inputField;
     }
+    
+    // Methods to append to the console consoleField and rankfield JTextArea with
+    // different formatting options depending on which is called
 
     public JFrame getFrame() {
         return frame;

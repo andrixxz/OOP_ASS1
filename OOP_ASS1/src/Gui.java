@@ -1,5 +1,8 @@
 package oop_project;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.swing.*;
 
 public class Gui {
@@ -78,6 +81,16 @@ public class Gui {
 
     // Getters to return various information
 
+    public void printRanking(List<String> sortedFiles, Map<String, Double> rankingScoresMap) {
+
+        // Print the names of the files in the sorted order along with their ranking scores
+        rankfield.append("\nFiles in highest ranking order:\n");
+        for (String filename : sortedFiles) {
+            double score = rankingScoresMap.getOrDefault(filename, 0.0);
+            rankfield.append(filename + " - Ranking Score: " + String.format("%.2f", score) + "\n");
+        }
+    }
+
     public void appendToConsole(String text) {
         consoleField.append(text + "\n");
     }
@@ -89,6 +102,10 @@ public class Gui {
     public void appendPercentage(String message, double percentage) {
         rankfield.append(message + String.format("%.2f%%", percentage) + "\n");
     }
+    public void appendRankingScore(String message, String score) {
+        rankfield.append(message + score + "\n");
+    }
+
 
     public JTextField getInputField() {
         return inputField;

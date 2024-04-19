@@ -91,5 +91,8 @@ public class FileProcessor {
         gui.printRanking(sortedFiles, rankingScoresMap);
     }
 
+    public static void clearRankingScoresMap() {
+        rankingScoresMap.clear();
 
+    }
 }

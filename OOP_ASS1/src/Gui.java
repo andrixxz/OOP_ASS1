@@ -106,6 +106,8 @@ public class Gui {
             public void actionPerformed(ActionEvent e) {
                 consoleField.setText("");
                 rankfield.setText("");
+                // Clear the ranking scores map
+                FileProcessor.clearRankingScoresMap();
             }
         });
 

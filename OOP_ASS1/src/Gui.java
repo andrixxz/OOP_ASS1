@@ -14,6 +14,7 @@ public class Gui {
     private JTextField inputField;
     private JButton fileButton;
     private JButton saveButton; // Add Save button
+    //private JButton clearButton;
     private JTextArea consoleField;
     private JTextArea rankfield;
 
@@ -24,6 +25,7 @@ public class Gui {
         inputField = new JTextField(20);
         fileButton = new JButton("Click Me To Access Files");
         saveButton = new JButton("Save"); // Initialize Save button
+        //clearButton = new JButton("Clear output");
         consoleField = new JTextArea();
         rankfield = new JTextArea();
 
@@ -55,6 +57,10 @@ public class Gui {
         // Add Save button to panel
         saveButton.setBounds(150, 100, 100, 50);
         panel.add(saveButton);
+      
+//        // Add Clear button to panel
+//        clearButton.setBounds(100, 150, 100, 50);
+//        panel.add(clearButton);
 
         consoleField.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(consoleField);
@@ -68,6 +74,14 @@ public class Gui {
         frame.add(panel);
         frame.add(rankpane);
 
+//        // ActionListener for Clear button
+//        clearButton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                consoleField.setText(""); // Clear consoleField
+//                rankfield.setText(""); // Clear rankfield
+//            }
+//        });
+        
         // Add ActionListener for Save button
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -79,6 +93,8 @@ public class Gui {
                     try (PrintWriter writer = new PrintWriter(selectedFile)) {
                         writer.println(rankfield.getText());
                         writer.println(consoleField.getText()); // Write console output to file
+                        // Show popup message with file path
+                        JOptionPane.showMessageDialog(null, "File saved successfully to: " + selectedFile.getAbsolutePath());
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }

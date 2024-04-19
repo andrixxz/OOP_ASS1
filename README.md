@@ -44,3 +44,15 @@ Gui.java : Implements the graphical user interface using java swing components.
 7. Files will be ranked in the last panel the the bottom of the GUI
 8. Press the save button to save information into a new file.
 9. Press the clear button to clear the output panel for a fresh search.
+
+
+## What We Would Have Done With More Time
+
+If we had more time we would have made a spelling function which would have 
+checked and corrected spelling mistakes used by the user. We would have also
+made a method to put the word in past and future tense as well as alternative 
+spelling ie "to" would also search for "too".
+
+We Would have also added a search where users can search for words by the 
+starting and trailing letters. For example if a user entered h*y the words
+beginning with h and ending in y would be returned ie "happy".

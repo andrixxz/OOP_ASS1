@@ -17,6 +17,9 @@ public class Control {
                     for (File file : files) {
                         FileProcessor.searchWordInFile(file, searchWord, gui);
                     }
+                    // After searching in all files, print files in highest ranking order
+                    FileProcessor.printFilesInHighestRankingOrder(gui);
+                    
                 } else {
                     gui.appendToConsole("No File Selected Or Opened");
                 }
